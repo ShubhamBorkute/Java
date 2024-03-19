@@ -1,0 +1,31 @@
+package p1;
+import java.util.Scanner;
+public class StudentRollNo {
+	public static void main(String[] args) {
+	Scanner s= new Scanner(System.in);
+	System.out.println("Enter roll no");
+	String str =s.nextLine();
+	int len = str.length();
+	if(len==10)
+	{
+		//System.out.println("roll no"+len);
+		String yoj=str.substring(0,2);
+		System.out.println("year of joining:- "+20+yoj);
+		String ccode=str.substring(2,6);
+		System.out.println("college code is:- "+ccode);
+		String Bcode=str.substring(6,8);
+		System.out.println("Branch code is:- "+Bcode+"ECE");
+		String rno=str.substring(8);
+		System.out.println("Rollno  is:- "+rno);
+
+		
+	}//end of if
+	else {
+		System.out.println("Invalid RollNo");
+		System.out.println("Length must 10 digit");
+	}//end of else
+	
+s.close();
+	}
+
+}

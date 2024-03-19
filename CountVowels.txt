@@ -1,0 +1,26 @@
+package p1;
+import java.util.Scanner;
+public class StringOperation 
+{
+	public static void main(String[] args)
+	{
+	Scanner s=new Scanner(System.in);
+	int count =0;
+	System.out.println("Enter the String :");
+	String str=s.nextLine();
+	int length=str.length();
+	for(int i=0;i<=length-1;i++)
+	{
+		 char ch = str.charAt(i);
+	
+		if(ch=='a'||ch=='e'||ch=='i'||ch=='o'|| ch=='u')
+		{
+			System.out.print(ch);
+			count++;
+		}//end of if
+	}//end of for
+	System.out.println("\ncount = :"+count);
+	s.close();
+	}
+
+}

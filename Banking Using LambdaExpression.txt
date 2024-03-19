@@ -1,0 +1,104 @@
+Convert BankTransaction application into LambdaExpressions
+
+Balance.java
+package p2;
+public class Balance {
+    public double bal=2000;
+    public void getBalance() {
+    	System.out.println("Balance Amount:"+bal);
+    }
+}
+
+Transaction.java
+package p2;
+public interface Transaction {
+    public final static Balance b=new Balance();
+    public abstract void process(int amt);
+}
+
+BankMainClass.java(MainClass)
+package p1;
+import java.util.Scanner;
+import p2.*;
+public class BankMainClass {
+	public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        int count=0;
+        pqr:
+        while(true) {
+        	System.out.println("Enter the PinNo:");
+            int pinNo = s.nextInt();
+            if(pinNo==1111 || pinNo==2222 || pinNo==3333)
+            {
+            	System.out.println("====Choice===");
+            	System.out.println("1.WithDraw\n2.Deposit");
+            	System.out.println("Enter the Choice:");
+            	int choice = s.nextInt();
+            	switch(choice)
+            	{
+            	case 1:
+            		System.out.println("Enter the amt:");
+            		int a1 = s.nextInt();
+            		if(a1>0 && a1%100==0)
+            		{
+            			Transaction wd = (int amt)->
+            			    {
+            			    	if(amt<=Transaction.b.bal)
+            			    	{
+            			    		System.out.println("Amt withDrawn:"+amt);
+            			    		Transaction.b.bal=Transaction.b.bal-amt;
+            			    		Transaction.b.getBalance();
+            			    		System.out.println("Transaction Completed...");
+            			    	}//end of if
+            			    	else
+            			    	{
+            			    		System.out.println("Insufficient fund...");
+            			    	}
+            			    };
+            			wd.process(a1);//Method_call_with_para
+            			
+            		}//end of
+            		else
+            		{
+            			System.out.println("Invalid amt...");
+            		}
+            		break pqr;//stop the loop
+            	case 2:
+            		System.out.println("Enter the amt:");
+            		int a2 = s.nextInt();
+            		if(a2>0 && a2%100==0)
+            		{
+            			Transaction dp = (int amt)->
+            				   {
+            					   System.out.println("Amt deposited:"+amt);
+            					   Transaction.b.bal=Transaction.b.bal+amt;
+            					   Transaction.b.getBalance();
+            					   System.out.println("Transaction Completed...");
+            				   };
+            			dp.process(a2);//method_call_with_para
+            		}//end of if
+            		else
+            		{
+            			System.out.println("Invalid amt...");
+            		}
+            		break pqr;//stop the loop
+            	default:
+            		System.out.println("Invalid choice...");
+            		break pqr;//stop the loop
+            	}//end of switch
+                	
+            }//end of if
+            else
+            {
+            	System.out.println("Invalid pinNo...");
+            	count++;
+            }
+            if(count==3)
+            {
+            	System.out.println("Sorry ! Transaction Blocked");
+            	break;//stop the loop
+            }//end of if
+        }//end loop
+        //s.close();
+	}
+}

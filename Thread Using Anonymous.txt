@@ -1,0 +1,47 @@
+Creating threads using Anonymous InnerClasses as implementation class  model:
+
+DemoAnonymous4.java(MainClass)
+package maccess;
+public class DemoAnonymous4 {
+public static void main(String[] args) {
+//Anonymous InnerClass as implementation class
+
+Runnable ob1 = new Runnable()
+{
+public void run()
+{
+for(int i=1;i&lt;=5;i++)
+{
+System.out.println(&quot;Task-1 : &quot;+i);
+try {
+Thread.sleep(3000);//stop the execution on time
+}catch(Exception e) {e.printStackTrace();}
+}//end of loop
+}
+};
+//Anonymous InnerClass as implementation class
+Runnable ob2 = new Runnable()
+{
+public void run()
+{
+for(int i=101;i&lt;=105;i++)
+{
+System.out.println(&quot;Task-2 : &quot;+i);
+try {
+Thread.sleep(3000);//stop the execution on
+time
+}catch(Exception e) {e.printStackTrace();}
+}//end of loop
+}
+};
+Thread t1 = new Thread(ob1);
+Thread t2 = new Thread(ob2);
+t1.start();
+t2.start();
+}
+}
+
+ClassFiles:
+DemoAnonymous4.class(MainClass)
+DemoAnonymous4$1.class
+DemoAnonymous4$2.class

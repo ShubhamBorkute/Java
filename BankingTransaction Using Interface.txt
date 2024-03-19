@@ -1,0 +1,129 @@
+Convert banktransaction application into Interfaces.
+
+Balance.java
+package p2;
+public class Balance {
+public double bal=2000;
+public void getBalance() {
+System.out.println(&quot;Balance Amount:&quot;+bal);
+}
+}
+
+Transaction.java
+package p2;
+
+public interface Transaction {
+public final static Balance b=new Balance();
+public abstract void process(int amt);
+}
+
+WithDraw.java
+package p2;
+public class WithDraw implements Transaction
+{
+public void process(int amt)
+{
+if(amt&lt;=b.bal)
+{
+System.out.println(&quot;Amt withDrawn:&quot;+amt);
+b.bal=b.bal-amt;
+b.getBalance();
+System.out.println(&quot;Transaction Completed...&quot;);
+}//end of if
+else
+{
+System.out.println(&quot;Insufficient fund...&quot;);
+}
+}
+}
+
+Deposit.java
+package p2;
+public class Deposit implements Transaction
+{
+public void process(int amt)
+{
+System.out.println(&quot;Amt deposited:&quot;+amt);
+b.bal=b.bal+amt;
+b.getBalance();
+System.out.println(&quot;Transaction Completed...&quot;);
+}
+}
+
+BankMainClass.java(MainClass)
+package p1;
+
+import java.util.Scanner;
+import p2.WithDraw;
+import p2.Deposit;
+public class BankMainClass {
+public static void main(String[] args) {
+Scanner s = new Scanner(System.in);
+int count=0;
+pqr:
+while(true) {
+System.out.println(&quot;Enter the PinNo:&quot;);
+int pinNo = s.nextInt();
+if(pinNo==1111 || pinNo==2222 || pinNo==3333)
+{
+System.out.println(&quot;====Choice===&quot;);
+System.out.println(&quot;1.WithDraw\n2.Deposit&quot;);
+System.out.println(&quot;Enter the Choice:&quot;);
+int choice = s.nextInt();
+switch(choice)
+{
+case 1:
+System.out.println(&quot;Enter the amt:&quot;);
+int a1 = s.nextInt();
+if(a1&gt;0 &amp;&amp; a1%100==0)
+{
+
+WithDraw wd = new WithDraw();
+wd.process(a1);//Method_call_with_para
+
+}//end of
+else
+{
+System.out.println(&quot;Invalid amt...&quot;);
+}
+break pqr;//stop the loop
+case 2:
+System.out.println(&quot;Enter the amt:&quot;);
+int a2 = s.nextInt();
+if(a2&gt;0 &amp;&amp; a2%100==0)
+{
+Deposit dp = new Deposit();
+dp.process(a2);//method_call_with_para
+}//end of if
+else
+{
+System.out.println(&quot;Invalid amt...&quot;);
+}
+break pqr;//stop the loop
+default:
+System.out.println(&quot;Invalid choice...&quot;);
+
+break pqr;//stop the loop
+}//end of switch
+
+}//end of if
+else
+{
+System.out.println(&quot;Invalid pinNo...&quot;);
+count++;
+}
+if(count==3)
+{
+System.out.println(&quot;Sorry ! Transaction Blocked&quot;);
+break;//stop the loop
+}//end of if
+}//end loop
+//s.close();
+}
+}
+ClassFiles:
+Balance.class
+Transaction.class
+WithDraw.class
+Deposit.class
+BankMainClass.class(MainClass)

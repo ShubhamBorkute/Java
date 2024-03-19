@@ -1,0 +1,95 @@
+Assignmnet:(Solution)
+Address.java
+package test;
+public class Address {
+public String hNo,sName,city;
+public int pinCode;
+}
+
+Contact.java
+package test;
+public class Contact {
+public String mailId;
+public long phNo;
+}
+
+Student.java
+package test;
+public class Student {
+public Address ad;//reference Variable
+public Contact c;//reference Variable
+String name,branch,rollNo;
+public Student(Address addr,Contact cnt)
+{
+ad=addr;
+c=cnt;
+}
+public void getStudentDetails()
+{
+System.out.println(&quot;====StudentDetails=====&quot;);
+System.out.println(&quot;Name:&quot;+name);
+System.out.println(&quot;Branch:&quot;+branch);
+System.out.println(&quot;RollNo:&quot;+rollNo);
+System.out.println(&quot;HNO:&quot;+ad.hNo);
+System.out.println(&quot;SName:&quot;+ad.sName);
+System.out.println(&quot;City:&quot;+ad.city);
+System.out.println(&quot;PinCode:&quot;+ad.pinCode);
+System.out.println(&quot;MailId:&quot;+c.mailId);
+System.out.println(&quot;PhNo:&quot;+c.phNo);
+}
+
+}
+
+Read.java
+package test;
+import java.util.Scanner;
+public class Read {
+public void read(Scanner s,Student stu)
+{
+System.out.println(&quot;Enter StuName:&quot;);
+stu.name = s.nextLine();
+System.out.println(&quot;Enter Branch:&quot;);
+stu.branch = s.nextLine();
+System.out.println(&quot;Enter the RollNo:&quot;);
+stu.rollNo = s.nextLine();
+System.out.println(&quot;Enter the hNo:&quot;);
+stu.ad.hNo = s.nextLine();
+System.out.println(&quot;Enter the SName:&quot;);
+stu.ad.sName = s.nextLine();
+System.out.println(&quot;Enter the City:&quot;);
+stu.ad.city = s.nextLine();
+System.out.println(&quot;Enter the PinCode:&quot;);
+stu.ad.pinCode = Integer.parseInt(s.nextLine());
+System.out.println(&quot;Enter the MailId:&quot;);
+stu.c.mailId = s.nextLine();
+System.out.println(&quot;Enter the PhNo:&quot;);
+stu.c.phNo = s.nextLong();
+}
+}
+
+Display.java
+package test;
+public class Display {
+public void dis(Student stu) {
+stu.getStudentDetails();
+}
+}
+
+DemoRef3.java(MainClass)
+package maccess;
+import java.util.*;
+
+import test.*;
+public class DemoRef3 {
+public static void main(String[] args) {
+Scanner s = new Scanner(System.in);
+Address ad = new Address();
+Contact c = new Contact();
+Student stu = new Student(ad,c);//Con_Call
+Read r = new Read();
+r.read(s, stu);//method call
+Display d = new Display();
+d.dis(stu);//method_call
+s.close();
+}
+}

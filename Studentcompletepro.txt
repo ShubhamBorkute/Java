@@ -1,0 +1,241 @@
+
+Student Details with result
+CheckBranch.java
+package p2;
+public class CheckBranch {
+public boolean k=false;
+public boolean verify(String br)
+{
+switch(br)
+{
+case "CSE":k=true;
+break;
+case "ECE":k=true;
+break;
+case "EEE":k=true;
+break;
+case "MECH":k=true;
+break;
+case "CIVIL":k=true;
+break;
+}//end of switch
+return k;
+}
+}
+ValidateRollNoWithBranch.java
+package p2;
+public class ValidateRollNoWithBranch {
+public boolean z=false;
+public String branch=null;
+public boolean validate(String br,String code)
+{
+switch(code)
+{
+case "05":branch="CSE";
+break;
+case "04":branch="ECE";
+break;
+Venkatesh Maipathii
+case "02":branch="EEE";
+break;
+case "03":branch="MECH";
+break;
+case "01":branch="CIVIL";
+break;
+}//end of switch
+if(branch!=null) {
+if(branch.equals(br)) {
+z=true;
+}//end of if
+}//end of
+return z;
+}
+}
+StudentResult.java
+package p2;
+public class StudentResult {
+public String generateResult(float per,boolean p)
+{
+if(p)
+{
+return "Fail";
+}
+else if(per>=70 && per<=100)
+{
+return "Destinction";
+}
+else if(per>=60 && per<70)
+{
+return "FirstClass";
+}
+else if(per>=50 && per<60)
+{
+return "SecondClass";
+}
+else if(per>=35 && per<50)
+{
+return "ThirdClass";
+}
+else
+{
+return "Fail";
+}
+Venkatesh Maipathii
+}
+}
+StudentMainClass.java(MainClass)
+package p1;
+import java.util.*;
+import p2.*;
+public class StudentMainClass {
+public static void main(String[] args) {
+Scanner s = new Scanner(System.in);
+System.out.println("Enter the StuName:");
+String stuName = s.nextLine();
+System.out.println("Enter the StuBranch:");
+String br = s.nextLine().toUpperCase();
+CheckBranch cb = new CheckBranch();
+boolean k = cb.verify(br);
+if(k)
+{
+System.out.println("Enter the rollNo:");
+String rollNo = s.nextLine();
+if(rollNo.length()==10)
+{
+ValidateRollNoWithBranch ob =
+new ValidateRollNoWithBranch();
+boolean z=ob.validate(br, rollNo.substring(6, 8));
+Venkatesh Maipathii
+if(z)
+{
+System.out.println("====Enter six Subject Marks===");
+int i=1,totM=0;
+boolean p=false;
+while(i<=6)
+{
+System.out.println("Enter the marks of sub"+i);
+int sub = s.nextInt();
+if(sub<0 || sub>100)
+{
+System.out.println("Invalid Marks...");
+continue;//skip below lines from the loop
+}
+if(sub>=0 && sub<=34)
+{
+p=true;
+}
+totM = totM+sub;
+i++;
+}//end of loop
+System.out.println("Name:"+stuName);
+System.out.println("Branch:"+br);
+System.out.println("RollNo:"+rollNo);
+Venkatesh Maipathii
+System.out.println("TotMarks:"+totM);
+float per = (float)totM/6;
+System.out.println("Per:"+per);
+p2.StudentResult sr = new p2.StudentResult();
+String result = sr.generateResult(per,p);
+System.out.println("Result:"+result);
+}//end of if
+else
+{
+System.out.println
+("RollNo not Validated with Branch...");
+}
+}//end of if
+else
+{
+System.out.println("Invalid rollNo...");
+}
+}//end of if
+else
+{
+System.out.println("Invalid Branch...");
+}
+s.close();
+Venkatesh Maipathii
+}
+}
+=======================================================
+Assignment:(Solution)
+wap to read a String and display the following,
+Number of vowels
+Number of Consonents
+Number of Numbers
+Sum of Numbers
+Number of others
+Program : DemoString8.java
+package p1;
+import java.util.*;
+public class DemoString8 {
+public static void main(String[] args) {
+Scanner s = new Scanner(System.in);
+System.out.println("Enter the String:");
+String str = s.nextLine();
+int len = str.length();
+System.out.println("===Normal String===");
+System.out.println(str.toString());
+System.out.println("length:"+len);
+int vcount=0,ccount=0,ncount=0,sum=0;
+for(int i=0;i<=len-1;i++)
+{
+char ch = str.charAt(i);//Char based on index
+switch(ch)
+{
+case 'a':
+case 'A':
+case 'e':
+case 'E':
+case 'i':
+case 'I':
+Venkatesh Maipathii
+case 'o':
+case 'O':
+case 'u':
+case 'U':vcount++;
+break;
+}//end of switch
+int k = (int)ch;//Char into ASCII
+if((k>=65 && k<=90) || (k>=97 && k<=122))
+{
+ccount++;
+}
+if(k>=48 && k<=57)
+{
+ncount++;
+char ch1 = (char)k;//ASCII into Char
+String sr = String.valueOf(ch1);//Char to String
+int p = Integer.parseInt(sr);//String into
+integer
+sum=sum+p;
+}
+}//end of loop
+System.out.println("Number of Vowels:"+vcount);
+System.out.println
+("Number of Consonents:"+(ccount-vcount));
+System.out.println("Number of Numerics:"+ncount);
+System.out.println("Sum of Numerics:"+sum);
+System.out.println("Others:"+(len-(ccount+ncount)));
+s.close();
+}
+}
+o/p:
+Enter the String:
+java17 version by 2021 sept - 90% of WebDevelopment
+===Normal String===
+java17 version by 2021 sept - 90% of WebDevelopment
+length:51
+Number of Vowels:12
+Number of Consonents:21
+Venkatesh Maipathii
+Number of Numerics:8
+Sum of Numerics:22
+Others:10
+=========================================================
+Assignment:
+Update StringDetails program by displaying StudentAddress and
+Student Contact
+StudentAddress : hNo,sName,city,pinNo
+StudentContact : mailId,phNo
+================

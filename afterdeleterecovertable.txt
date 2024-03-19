@@ -1,0 +1,67 @@
+ select * from emp1234
+  2  As of timestamp (sysdate-interval '4'minute);
+
+    ROLLNO SNAME              M1         M2         M3 EMAIL
+---------- ---------- ---------- ---------- ---------- -------------------------
+       109 raghu              89         94         84 akshay111@gmail.com
+       100 shubham            79         84         74 shubham@123@gmail.com
+       102 akshay             75         80         70 akshay1234@gmail.com
+       103 pavan              75         80         70 pavanap1234@gmail.com
+       104 arjun              84         89         79 arjunpanday@gmail.com
+       105 ajay               54         59         49 ajayvikas@gmail.com
+       106 yash               75         80         70 yashumate@gmail.com
+       107 ramu               75         80         70 shubham@@@gmail.com
+       108 sai                75         80         70 shubhm@1111gmail.com
+       110 hari               89         75         68 shub12345@gmail.com
+
+10 rows selected.
+
+SQL> insert into emp1234 select * from emp1234 as of timestamp(sysdate-interval '5' minute);
+
+10 rows created.
+
+SQL> select * from emp123;
+select * from emp123
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> select * from emp1234;
+
+    ROLLNO SNAME              M1         M2         M3 EMAIL
+---------- ---------- ---------- ---------- ---------- -------------------------
+       109 raghu              89         94         84 akshay111@gmail.com
+       100 shubham            79         84         74 shubham@123@gmail.com
+       102 akshay             75         80         70 akshay1234@gmail.com
+       103 pavan              75         80         70 pavanap1234@gmail.com
+       104 arjun              84         89         79 arjunpanday@gmail.com
+       105 ajay               54         59         49 ajayvikas@gmail.com
+       106 yash               75         80         70 yashumate@gmail.com
+       107 ramu               75         80         70 shubham@@@gmail.com
+       108 sai                75         80         70 shubhm@1111gmail.com
+       110 hari               89         75         68 shub12345@gmail.com
+
+10 rows selected.
+
+SQL> commit;
+
+Commit complete.
+
+SQL>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

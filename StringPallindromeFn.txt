@@ -1,0 +1,26 @@
+package p1;
+
+import java.util.Scanner;
+public class StringPallindromeFn {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter a string");
+        String str=sc.nextLine();
+    	System.out.println("Original String:s "+str.toString());
+
+		StringBuffer sb = new StringBuffer(str);
+        sb.reverse();
+        String str2=sb.toString();
+    	System.out.println("After Reverse: "+str2.toString());
+
+        if(str.equals(str2))
+        {
+        	System.out.println("String is Pallindrome ");
+        }
+        else {
+    	System.out.println("String is not Pallindrome ");
+        }
+        sc.close();
+	}
+
+}

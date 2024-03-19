@@ -1,0 +1,115 @@
+Construct application from the following Layout:(Arithmetic Operations)
+IArithmetic.java
+package p2;
+public interface IArithmetic {
+public abstract double process(int x,int y);
+}
+
+Addition.java
+package p2;
+public class Addition implements IArithmetic{
+public double process(int x,int y)
+{
+return x+y;
+
+}
+}
+
+Subtraction.java
+package p2;
+public class Subtraction implements IArithmetic{
+public double process(int x,int y)
+{
+return x-y;
+}
+}
+
+Multiplication.java
+package p2;
+public class Multiplication implements IArithmetic{
+public double process(int x,int y)
+{
+return x*y;
+}
+}
+
+Division.java
+package p2;
+public class Division implements IArithmetic{
+public double process(int x,int y)
+{
+return (double)x/y;
+}
+}
+
+ModDivision.java
+package p2;
+public class ModDivision implements IArithmetic{
+public double process(int x,int y)
+{
+return x%y;
+}
+}
+
+DemoInterface6.java(MainClass)
+package p1;
+import java.util.Scanner;
+import p2.Addition;
+import p2.Subtraction;
+import p2.Multiplication;
+import p2.Division;
+import p2.ModDivision;
+public class DemoInterface6 {
+public static void main(String[] args) {
+Scanner s = new Scanner(System.in);
+System.out.println(&quot;Enter int value1:&quot;);
+int v1 = s.nextInt();
+System.out.println(&quot;Enter int value2:&quot;);
+int v2 = s.nextInt();
+System.out.println(&quot;====Choice====&quot;);
+System.out.println(&quot;1.add\n2.sub\n3.mul\n4.div\n5.modDiv&quot;);
+System.out.println(&quot;Enter the Choice:&quot;);
+int choice = s.nextInt();
+switch(choice)
+{
+case 1:
+Addition ad = new Addition();
+double r1 = ad.process(v1,v2);
+
+System.out.println(&quot;Sum:&quot;+r1);
+break;
+case 2:
+Subtraction sb = new Subtraction();
+double r2 = sb.process(v1,v2);
+System.out.println(&quot;Sub:&quot;+r2);
+break;
+case 3:
+Multiplication ml = new Multiplication();
+double r3=ml.process(v1,v2);
+System.out.println(&quot;Mul:&quot;+r3);
+break;
+case 4:
+Division dv = new Division();
+double r4=dv.process(v1,v2);
+System.out.println(&quot;Div:&quot;+r4);
+break;
+case 5:
+ModDivision md = new ModDivision();
+double r5=md.process(v1,v2);
+System.out.println(&quot;ModDiv:&quot;+r5);
+break;
+default:
+System.out.println(&quot;Invalid Choice...&quot;);
+
+}//end of switch
+s.close();
+}
+}
+ClassFiles:
+IArithmetic.class
+Addition.class
+Subtraction.class
+Multiplication.class
+Division.class
+ModDivision.class
+DemoInterface6.class(MainClass)

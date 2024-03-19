@@ -1,0 +1,104 @@
+package p2;
+public class DepositeOperation {
+public void deposite(int amt)
+{
+	int bal=2000;
+	int total=bal+amt;
+	System.out.println("====Transaction Successful====");
+	System.out.println("The balence in your account is "+total);
+}
+}
+====================================
+package p2;
+public class WithdrowOperation {
+public void withdrow(int amt1)
+{
+	int bal=2000;
+	if(amt1<=bal)
+	{
+		if(amt1%200==0||amt1%500==0||amt1%2000==0) 
+		{
+		int totalbal=bal-amt1;
+		System.out.println("====Transaction successful====");
+		System.out.println("The balence in your account is "+totalbal);
+	    }
+		else
+		{
+		System.out.println("Amount Must be 200 500 2000");
+		}
+	}
+	else
+		{
+		System.out.println("====Insufficient Balence====");
+		}	
+}
+}
+============================================
+package p1;
+import java.util.Scanner;
+import p2.DepositeOperation;
+import p2.WithdrowOperation;
+public class MainOperation {
+public static void main(String[]args)
+{ 
+		Scanner sc=new Scanner(System.in);
+		int st1;
+	do {
+	System.out.println("Welcome To *** BANK");
+	System.out.println("Enter Your 4 digit Pin number");
+	int pin=sc.nextInt();
+	if(pin==1111||pin==2222||pin==3333||pin==4444)
+	{
+	System.out.println("What Would You Like to do");
+	System.out.println("1.Withdrow \n2.Deposite \n3.Cancel");
+	System.out.println("Enter Your Choice");
+	int ch=sc.nextInt();
+	switch(ch)
+	{
+	case 1 : System.out.println("====You Select Withdrow====");
+	         System.out.println("Enter You Amount in multiple of 100");
+	         int amt=sc.nextInt();
+	         if(amt>0 && amt%100==0)
+	         {
+	        	 WithdrowOperation wd=new WithdrowOperation();
+	        	 wd.withdrow(amt);
+	         }
+	         else
+	         {
+	        	 System.out.println("****Invalid Amount****");
+	        	 System.out.println("Amount should be multiple of 100");
+	         }
+	         break;
+	case 2 :System.out.println("=====You Select Deposite====");
+           System.out.println("Amount should be multiple of 100");                  
+              int amt1=sc.nextInt();
+              if(amt1>0 && amt1%100==0)  
+              {
+            	DepositeOperation dp=new DepositeOperation();
+            	dp.deposite(amt1);
+              }
+              else
+              {
+            	  System.out.println("****Invalid Amount****");
+ 	        	 System.out.println("Amount should be multiple of 100");  
+              }
+              break;
+	case 3 : 
+		      System.out.println("====Operation Cancel====");
+		      return;
+    default : System.out.println("***Invalid Choice***");          
+	             }//end of switch
+	
+            }//end of if
+	       else
+	           {
+	            	System.out.println("=== Invalid Pin ===");
+		
+	           }//end of else
+	System.out.println("\n****do you want continue****");
+	System.out.println("1.Yes\n2.No");
+    st1=sc.nextInt();
+	}while(st1==1);
+	sc.close();
+}//end of main
+}//end of class

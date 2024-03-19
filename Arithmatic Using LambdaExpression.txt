@@ -1,0 +1,55 @@
+Convert IArithmetic application into LambdaExpressions
+
+IArithmetic.java
+package p2;
+public interface IArithmetic {
+   public abstract double process(int x,int y);
+}
+DemoLambdaExpression4.java(MainClass)
+package p1;
+import java.util.Scanner;
+import p2.*;
+public class DemoLambdaExpression4 {
+	public static void main(String[] args) {
+       Scanner s = new Scanner(System.in);
+       System.out.println("Enter int value1:");
+       int v1 = s.nextInt();
+       System.out.println("Enter int value2:");
+       int v2 = s.nextInt();
+       System.out.println("====Choice====");
+       System.out.println("1.add\n2.sub\n3.mul\n4.div\n5.modDiv");
+       System.out.println("Enter the Choice:");
+       int choice = s.nextInt();
+       switch(choice)
+       {
+       case 1:
+    	   IArithmetic ad = (int x,int y)-> x+y;
+    	   double r1 = ad.process(v1,v2);
+    	   System.out.println("Sum:"+r1);
+    	   break;
+       case 2:
+    	   IArithmetic sb = (int x,int y)-> x-y;
+    	   double r2 = sb.process(v1,v2);
+    	   System.out.println("Sub:"+r2);
+    	   break;
+       case 3:
+    	   IArithmetic ml = (int x,int y)->	x*y;
+    	   double r3=ml.process(v1,v2);
+    	   System.out.println("Mul:"+r3);
+    	   break;
+       case 4:
+    	   IArithmetic dv = (int x,int y)-> (double)x/y;
+    	   double r4=dv.process(v1,v2);
+    	   System.out.println("Div:"+r4);
+    	   break;
+       case 5:
+    	   IArithmetic md = (int x,int y)-> x%y;
+    	   double r5=md.process(v1,v2);
+    	   System.out.println("ModDiv:"+r5);
+    	   break;
+       default:
+    	   System.out.println("Invalid Choice...");
+       }//end of switch
+       s.close();
+	}
+}

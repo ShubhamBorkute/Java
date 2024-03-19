@@ -1,0 +1,93 @@
+package Itest;
+public interface IArithmatic {
+	public abstract double process(int x , int y);
+}
+=================================================================
+package Itest;
+public class IAddition implements IArithmatic{
+public double process(int x,int y) {
+	int z;
+	z=x+y;
+	return z;
+}
+}
+=================================================================
+package Itest;
+public class ISubstraction implements IArithmatic {
+	public double process(int x,int y)
+	{
+		int z=x-y;
+		return z;
+	}
+}
+==============================================================
+package Itest;
+public class IMultiplication implements IArithmatic {
+	public double process(int x,int y)
+	{
+		int z=x*y;
+		return z;
+	}
+}
+===============================================================
+package Itest;
+public class IDivision implements IArithmatic {
+	public double process(int x,int y)
+	{
+		int z=x/y;
+		return z;
+	}
+}
+===========================================================
+package Itest;
+public class IModivision implements IArithmatic {
+	public double process(int x,int y)
+	{
+		int z=x%y;
+		return z;
+	}
+}
+===============================================================
+package Maccess;
+import java.util.Scanner;
+import Itest.*;
+
+public class AllOperation2 {
+	public static void main(String[] args) {
+
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter First number");
+		int a=sc.nextInt();
+		System.out.println("Enter Second number");
+		int b=sc.nextInt();
+		System.out.println("====Choice===");
+		System.out.println("1.Addition \n2.Substraction \n3.Multiplication \n4.Division \n5.Modivision");
+		System.out.println("Enter Your Choice");
+		int Choice=sc.nextInt();
+		switch(Choice)
+		{
+		case 1 :  IAddition ad= new IAddition();
+		          double p=ad.process(a,b);
+		          System.out.println("The Addition is ="+p);
+		          break;
+		case 2: ISubstraction sb= new ISubstraction();
+		          double q=sb.process(a,b);
+		          System.out.println("The Substraction is ="+q);
+		          break;
+		case 3: IMultiplication mb= new IMultiplication();
+	             double r=mb.process(a,b);
+	             System.out.println("The Multiplication is ="+r);
+	             break;
+	    case 4: IDivision dv= new IDivision();
+	           double s=dv.process(a,b);
+	            System.out.println("The Division is ="+s);
+	             break;
+		case 5: IModivision md= new IModivision();
+	             double t=md.process(a,b);
+	             System.out.println("The Modivision is ="+t);
+	             break;
+		default : System.out.println("Invalid Choice ");          
+		}// end of switch
+	     sc.close();
+	}
+}

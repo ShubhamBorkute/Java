@@ -1,0 +1,101 @@
+package p2;
+public class Address
+{
+   public String hNo,stname,city;
+   public int pincode=0;
+}
+=============================================================
+package p2;
+public class Contact
+{
+    public String mailID;
+    public long phno=0;
+}
+=============================================================
+package p2;
+public class Student
+{
+    public String sname,bname,rollno;
+   // public int rollno=0;
+    
+    public Address ad;
+    public Contact ct;
+    
+    public Student(Address add,Contact cot)
+    {
+    	ad=add;
+    	ct=cot;
+    }
+	public void getStudentDetail()
+    {
+		System.out.println("\n====StudentDetails===");
+		System.out.println("RollNo:"+rollno);
+    	System.out.println("student name:"+sname);  
+    	System.out.println("Branch name:"+bname);       
+	    System.out.println("HNo:"+ad.hNo);    
+	    System.out.println("sname:"+ad.stname);    
+	    System.out.println("city:"+ad.city);    
+	    System.out.println("mail:"+ct.mailID);    
+	    System.out.println("phno:"+ct.phno);    
+
+    }
+}
+======================================================
+package p2;
+import java.util.*;
+public class Read
+{
+	    public Address ad;
+	    public Contact ct;
+    public Read(Scanner s,Student stu)
+    {
+   
+     System.out.println(" Enter sname:");  
+     stu.sname=s.nextLine();
+     System.out.println(" Enter bname:"); 
+     stu.bname=s.nextLine();
+     System.out.println(" Enter rollno:"); 
+     stu.rollno=s.nextLine();
+     System.out.println("Enter hno:"); 
+     stu.ad.hNo=s.nextLine();
+     System.out.println("Enter Stname :");
+     stu.ad.stname=s.nextLine();
+     System.out.println(" Enter city:");  
+     stu.ad.city=s.nextLine();
+     System.out.println(" Enter mailid:");
+     stu.ct.mailID=s.nextLine();
+     System.out.println(" Enter phno:");   
+     stu.ct.phno=s.nextLong();
+     
+    }
+}
+===========================================================
+package p2;
+
+public class Display 
+{
+    public void dis(Student stu)
+    {
+    	stu.getStudentDetail();
+    }
+}
+==========================================================
+package p1;
+import java.util.*;
+import p2.*;
+public class StudentMain 
+{
+
+	public static void main(String[] args)
+	{
+    Scanner s= new Scanner(System.in);
+    Address ad=new Address();
+    Contact ct=new Contact();
+    Student stu=new Student(ad,ct);
+    Read rd = new Read(s,stu);
+    Display d=new Display();
+    d.dis(stu);
+    s.close();
+	}
+
+}
